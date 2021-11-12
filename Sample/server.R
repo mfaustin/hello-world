@@ -8,6 +8,9 @@
 #
 
 library(shiny)
+library(tidyverse)
+
+fullData<-read_csv("../data/OnlineNewsPopularity.csv")
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
@@ -21,6 +24,10 @@ shinyServer(function(input, output) {
         # draw the histogram with the specified number of bins
         hist(x, breaks = bins, col = 'darkgray', border = 'white')
 
+    })
+    output$testPlot <- renderPlot({
+        hist(fullData$shares)
+        
     })
 
 })
