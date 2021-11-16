@@ -11,8 +11,10 @@ library(shiny)
 library(shinythemes)
 
 # Define UI for application that draws a histogram
-shinyUI(fluidPage(
+shinyUI(navbarPage("Project 3",
+    theme = shinytheme("cerulean"), 
 
+    tabPanel("Plot Page",
     # Application title
     titlePanel("Old Faithful Geyser Data"),
 
@@ -32,4 +34,19 @@ shinyUI(fluidPage(
             plotOutput("testPlot")
         )
     )
+),
+ tabPanel("About", "This will be page 2 content"),
+tabPanel("Data Exploration", "This will be page 3 content"),
+tabPanel("Modeling",
+         mainPanel(
+             tabsetPanel(
+                tabPanel("Modeling Info"),
+                tabPanel("Model Fitting"),
+                tabPanel("Prediction")
+                 
+             )
+         )
+         )
 ))
+
+
